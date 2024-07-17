@@ -17,6 +17,12 @@ body {
   z-index: 1;
 }
 
+#error{
+  color: tomato;
+  text-align: left;
+  font-size: 0.8rem;
+}
+
 .container {
   background: rgba(255, 255, 255, 0.1);
   padding: 20px;

@@ -25,7 +25,7 @@ root.render(
         position: "fixed",
         inset: "0",
         zIndex: "-10",
-        opacity: '0.3'
+        opacity: '0.5'
       }}
     />
   </React.StrictMode>
